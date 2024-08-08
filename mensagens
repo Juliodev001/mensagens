@@ -1,0 +1,42 @@
+"MENSAGENS
+
+" S = Sucesso
+" E = ERRO
+" W = AVISO
+" I = INFORMAÇÃO
+" A = ABORTAR
+" X = CANCELAR
+
+* Comportamento das mensagens
+
+
+* Uso
+* ----------------------------------------------------------------
+* MENSAGE 'Teste' TYPE 'S'
+* MESSAGE 'Teste' TYPE 'S' DISPLAY LIKE 'E'
+* MESSAGE s000 (ztest) WITH 'Julio Cesar'.
+
+
+
+* sy-msgid = 'ZTEST'.
+* MESSAGE ID sy-msgid TYPE 'S' NUMBER 000 WITH 'Julio CESAR'
+
+* DATA: id_message TYPE String
+* MESSAGE s000 (ztest) WITH 'Julio Cesar' INTO ld_message
+*WRITE ld_message
+*SKIP.
+
+SELECTION-SCREEN BEGIN OF BLOCK b1.
+  PARAMETERS p_msg(60) TYPE c OBLIGATORY DEFAULT ' cuidado algo está errado'.
+  PARAMETERS p_type   TYPE c OBLIGATORY.
+SELECTION-SCREEN END OF BLOCK b1.
+
+* AT SELECTION-SCREEN.
+* IF p_type = 'w'.
+* MESSAGE 'Isso é um aviso ' TYPE 'W'.
+* ENDIF.
+
+ START-OF-SELECTION .
+  MESSAGE p_msg TYPE p_type.
+
+ WRITE ' isso é tudo'.
